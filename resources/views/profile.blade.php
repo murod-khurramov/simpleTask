@@ -1,13 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile Page</title>
-    @vite('resources/css/app.css')
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+
+@include('components.navbar')
+<title>Profile</title>
+<div class="bg-gray-100 min-h-screen flex items-center justify-center">
 
 <!-- Profile Card -->
 <div class="bg-white rounded-lg shadow-md p-6 w-full max-w-md">
@@ -15,9 +9,9 @@
         <!-- Profile Picture -->
         <img src="https://via.placeholder.com/80" alt="Profile Picture" class="w-20 h-20 rounded-full">
         <div class="ml-4">
-            <h1 class="text-xl font-bold text-gray-800">John Doe</h1>
-            <p class="text-gray-600">john.doe@example.com</p>
-            <p class="text-gray-500 text-sm">Joined: January 1, 2024</p>
+            {{--            <h1 class="text-xl font-bold text-gray-800">John Doe</h1>--}}
+            <p class="text-gray-600">{{ Auth::user()->email }}</p>
+            <p class="text-gray-500 text-sm">Joined: {{ Auth::user()->created_at->format('F, j, Y') }}</p>
         </div>
     </div>
     <hr class="my-4">
@@ -33,6 +27,4 @@
         Edit Profile
     </button>
 </div>
-
-</body>
-</html>
+</div>
